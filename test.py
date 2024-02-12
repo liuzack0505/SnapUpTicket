@@ -4,16 +4,18 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import unicodedata
 import time
+import signal
 
 GMAIL = "liu.zack0505@gmail.com"
 PASSWORD = "83298329zack"
+HUMAN_DELAY = 0.1
 
 # GMAIL = "0982306031"
 # PASSWORD = "0982306031"
 
 url = input("請貼上網址：")
 
-driver = webdriver.Chrome()
+driver = webdriver.Edge()
 driver.get(url)
 ##sign in
 try:
@@ -22,17 +24,17 @@ try:
     email = driver.find_element(By.ID, 'user_login')
     email.clear()
     email.send_keys(GMAIL)
-    time.sleep(0.5) ## inmitate human
+    # time.sleep(HUMAN_DELAY) ## inmitate human
     password = driver.find_element(By.ID, 'user_password')
     password.clear()
     password.send_keys(PASSWORD)
-    time.sleep(0.5) ## inmitate human
+    # time.sleep(HUMAN_DELAY) ## inmitate human
     driver.find_element(By.XPATH, '//*[@id="new_user"]/input[3]').click()
 except:
     print("無登入按鈕")
 
 # current_time = time.localtime()
-# target_time = time.mktime(time.strptime(f'{current_time.tm_year}-{current_time.tm_mon}-{current_time.tm_mday} 20:00:00', '%Y-%m-%d %H:%M:%S'))
+# target_time = time.mktime(time.strptime(f'{current_time.tm_year}-{current_time.tm_mon}-{current_time.tm_mday} 20:00:01', '%Y-%m-%d %H:%M:%S'))
 # wait_time = target_time - time.mktime(current_time)
 
 # if wait_time < 0:
@@ -48,7 +50,7 @@ try:
     length = len(buttons)
     if length >= 6:
         buttons[4].click()
-        time.sleep(0.5) ## inmitate human
+        # time.sleep(HUMAN_DELAY) ## inmitate human
         buttons[5].click()
     elif length >= 2:
         buttons[0].click()
@@ -57,38 +59,38 @@ try:
         raise KeyError()
     
     ## find verification code
-    code_element = driver.find_element(By.XPATH, '//*[@id="registrationsNewApp"]/div/div[5]/div[2]/div/div/div/div/div/p')
+    code_element = driver.find_elements(By.XPATH, '//*[@id="registrationsNewApp"]/div/div[5]/div[2]/div/div/div/div/div/p')
     if code_element:
-        code_element = code_element.text.split(" ")
+        code_element = code_element[0].text.split(" ")
         verification_code = ""
         for i in code_element:
             if i.isdigit():
                 verification_code += i
         verification_code = unicodedata.normalize('NFKC', verification_code)
         codebox = driver.find_element(By.XPATH, '//*[@id="registrationsNewApp"]/div/div[5]/div[2]/div/div/div/div/div/div/div/input')
-        time.sleep(0.5) ## inmitate human
+        # time.sleep(HUMAN_DELAY) ## inmitate human
         codebox.clear()
         codebox.send_keys(verification_code)
 
     ## check box
     checkbox = driver.find_element(By.ID, 'person_agree_terms')
     if not checkbox.is_selected():
-        time.sleep(0.5) ## inmitate human
+        # time.sleep(HUMAN_DELAY) ## inmitate human
         checkbox.click()
-
     ## next step
     next_step = driver.find_element(By.XPATH, '//*[@id="registrationsNewApp"]/div/div[5]/div[4]/button')
-    time.sleep(0.5) ## inmitate human
+    time.sleep(HUMAN_DELAY) ## inmitate human
     next_step.click()
-
     end = WebDriverWait(driver, 600).until(EC.presence_of_element_located((By.XPATH, '//*[@id="registrations_controller"]/div[4]/div[2]/div/div[4]/a')))
-    time.sleep(0.5) ## inmitate human
+    time.sleep(HUMAN_DELAY) ## inmitate human
     end.click()
     print("搶票成功")
     time.sleep(600)
 except KeyError as e:
     print("位置少於兩個")
+    time.sleep(600)
 except Exception as e:
     print("沒有票了")
     print(e)
+    time.sleep(600)
 driver.quit()
