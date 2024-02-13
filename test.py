@@ -6,12 +6,12 @@ import unicodedata
 import time
 import signal
 
-GMAIL = "liu.zack0505@gmail.com"
-PASSWORD = "83298329zack"
+# GMAIL = "liu.zack0505@gmail.com"
+# PASSWORD = "83298329zack"
 HUMAN_DELAY = 0.1
 
-# GMAIL = "0982306031"
-# PASSWORD = "0982306031"
+GMAIL = "0982306031"
+PASSWORD = "0982306031"
 
 url = input("請貼上網址：")
 
