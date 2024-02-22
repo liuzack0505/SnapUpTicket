@@ -15,7 +15,7 @@ PASSWORD = "0982306031"
 
 url = input("請貼上網址：")
 
-driver = webdriver.Edge()
+driver = webdriver.Chrome()
 driver.get(url)
 ##sign in
 try:
