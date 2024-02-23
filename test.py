@@ -8,7 +8,6 @@ import signal
 
 # GMAIL = "liu.zack0505@gmail.com"
 # PASSWORD = "83298329zack"
-HUMAN_DELAY = 0.1
 
 GMAIL = "0982306031"
 PASSWORD = "0982306031"
@@ -74,18 +73,14 @@ try:
         checkbox.click()
     ## next step
     next_step = driver.find_element(By.XPATH, '//*[@id="registrationsNewApp"]/div/div[5]/div[4]/button')
-    time.sleep(HUMAN_DELAY) ## inmitate human
     next_step.click()
     end = WebDriverWait(driver, 600).until(EC.presence_of_element_located((By.XPATH, '//*[@id="registrations_controller"]/div[4]/div[2]/div/div[4]/a')))
-    time.sleep(HUMAN_DELAY) ## inmitate human
     end.click()
     print("搶票成功")
     time.sleep(600)
 except KeyError as e:
     print("位置少於兩個")
-    time.sleep(600)
 except Exception as e:
     print("沒有票了")
     print(e)
-    time.sleep(600)
 driver.quit()
