@@ -4,15 +4,41 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import unicodedata
 import time
-import signal
 
-# GMAIL = "liu.zack0505@gmail.com"
-# PASSWORD = "83298329zack"
+gmails = ["0982306031", "0928958175", "liu.zack0505@gmail.com"]
+passwords = ["0982306031", "0928958175", "83298329zack"]
 
-GMAIL = "0982306031"
-PASSWORD = "0982306031"
+# handle user
+print("輸入0是外婆的帳號, 1是阿母的帳號")
+user = int(input("請輸入使用者："))
+
+GMAIL = gmails[user]
+PASSWORD = passwords[user]
 
 url = input("請貼上網址：")
+
+seat1 = 0
+seat2 = 0
+
+while True:
+    try:
+        seat1 = int(input("請輸入第一個位置號碼："))
+        if seat1 > 0:
+            break
+        else:
+            print("請重新輸入")
+    except:
+        print("請重新輸入")
+
+while True:
+    try:
+        seat2 = int(input("請輸入第二個位置號碼："))  
+        if seat2 > 0:
+            break
+        else:
+            print("請重新輸入")
+    except:
+        print("請重新輸入")
 
 driver = webdriver.Chrome()
 driver.get(url)
@@ -38,7 +64,7 @@ if wait_time < 0:
     wait_time += 86400
 
 print(f"{wait_time} 秒後，開始搶票")
-time.sleep(wait_time)
+# time.sleep(wait_time)
 
 try:
     ## find plus button
@@ -46,8 +72,8 @@ try:
     buttons = WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, 'button.btn-default.plus')))
     length = len(buttons)
     if length >= 6:
-        buttons[4].click()
-        buttons[5].click()
+        buttons[seat1 - 1].click()
+        buttons[seat2 - 1].click()
     elif length >= 2:
         buttons[0].click()
         buttons[1].click()
