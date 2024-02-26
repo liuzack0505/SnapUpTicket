@@ -64,7 +64,7 @@ if wait_time < 0:
     wait_time += 86400
 
 print(f"{wait_time} 秒後，開始搶票")
-# time.sleep(wait_time)
+time.sleep(wait_time)
 
 try:
     ## find plus button
