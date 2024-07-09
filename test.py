@@ -4,6 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import unicodedata
 import time
+import re
 
 gmails = ["0982306031", "0928958175", "liu.zack0505@gmail.com"]
 passwords = ["0982306031", "0928958175", "83298329zack"]
@@ -36,7 +37,7 @@ while True:
         if user_input == "":
             break;
         if int(user_input) > 0:
-            seat2 = user_input
+            seat2 = int(user_input)
             break
         else:
             print("請重新輸入")
@@ -74,20 +75,40 @@ try:
     driver.refresh()
     buttons = WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, 'button.btn-default.plus')))
     length = len(buttons)
-    if seat1 is not None and seat1 <= length:
-        buttons[seat1 - 1].click()
-    if seat2 is not None and seat2 <= length:
-        buttons[seat2 - 1].click()
+    if seat1 is not None :
+        if seat1 <= length:
+            buttons[seat1 - 1].click()
+        else:
+            buttons[0].click()
+    if seat2 is not None:
+        if seat2 <= length:
+            buttons[seat2 - 1].click()
+        else:
+            buttons[1].click()
     
     ## find verification code
     code_element = driver.find_elements(By.XPATH, '//*[@id="registrationsNewApp"]/div/div[5]/div[2]/div/div/div/div/div/p')
     if code_element:
-        code_element = code_element[0].text.split(" ")
-        verification_code = ""
-        for i in code_element:
-            if i.isdigit():
-                verification_code += i
-        verification_code = unicodedata.normalize('NFKC', verification_code)
+        code_element = code_element[0].text
+        print("現在的問題是：", code_element)
+        match = re.search(r'\((.*?)\)', code_element)
+        chinese_numerals = match.group()[1:-1] if match else ""
+
+        chinese_to_arabic = {
+            '零': '0',
+            '一': '1',
+            '二': '2',
+            '三': '3',
+            '四': '4',
+            '五': '5',
+            '六': '6',
+            '七': '7',
+            '八': '8',
+            '九': '9'
+        }
+
+        verification_code = ''.join(chinese_to_arabic[ch] for ch in chinese_numerals)
+        
         codebox = driver.find_element(By.XPATH, '//*[@id="registrationsNewApp"]/div/div[5]/div[2]/div/div/div/div/div/div/div/input')
         codebox.clear()
         codebox.send_keys(verification_code)
@@ -99,13 +120,14 @@ try:
     ## next step
     next_step = driver.find_element(By.XPATH, '//*[@id="registrationsNewApp"]/div/div[5]/div[4]/button')
     next_step.click()
+    ## enter the check page(can comment this part when debugging)
     end = WebDriverWait(driver, 600).until(EC.presence_of_element_located((By.XPATH, '//*[@id="registrations_controller"]/div[4]/div[2]/div/div[4]/a')))
     end.click()
     print("搶票成功")
 except KeyError as e:
     print("位置少於兩個")
 except Exception as e:
-    print("沒有票了")
+    print("搶票錯誤，請看以下錯誤訊息：")
     print(e)
 time.sleep(600)
 driver.quit()
