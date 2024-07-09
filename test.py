@@ -17,12 +17,12 @@ PASSWORD = passwords[user]
 
 url = input("請貼上網址：")
 
-seat1 = 0
-seat2 = 0
+seat1 = None
+seat2 = None
 
 while True:
     try:
-        seat1 = int(input("請輸入第一個位置號碼："))
+        seat1 = int(input("請輸入第一個位置號碼:"))
         if seat1 > 0:
             break
         else:
@@ -32,13 +32,16 @@ while True:
 
 while True:
     try:
-        seat2 = int(input("請輸入第二個位置號碼："))  
-        if seat2 > 0:
+        user_input = input("請輸入第二個位置號碼(按enter可以跳過):")  
+        if user_input == "":
+            break;
+        if int(user_input) > 0:
+            seat2 = user_input
             break
         else:
             print("請重新輸入")
     except:
-        print("請重新輸入")
+        print("error")
 
 driver = webdriver.Chrome()
 driver.get(url)
@@ -71,14 +74,10 @@ try:
     driver.refresh()
     buttons = WebDriverWait(driver, 10).until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, 'button.btn-default.plus')))
     length = len(buttons)
-    if length >= 6:
+    if seat1 is not None and seat1 <= length:
         buttons[seat1 - 1].click()
+    if seat2 is not None and seat2 <= length:
         buttons[seat2 - 1].click()
-    elif length >= 2:
-        buttons[0].click()
-        buttons[1].click()
-    else:
-        raise KeyError()
     
     ## find verification code
     code_element = driver.find_elements(By.XPATH, '//*[@id="registrationsNewApp"]/div/div[5]/div[2]/div/div/div/div/div/p')
@@ -103,10 +102,10 @@ try:
     end = WebDriverWait(driver, 600).until(EC.presence_of_element_located((By.XPATH, '//*[@id="registrations_controller"]/div[4]/div[2]/div/div[4]/a')))
     end.click()
     print("搶票成功")
-    time.sleep(600)
 except KeyError as e:
     print("位置少於兩個")
 except Exception as e:
     print("沒有票了")
     print(e)
+time.sleep(600)
 driver.quit()
