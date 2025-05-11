@@ -8,11 +8,11 @@ import time
 import re
 import undetected_chromedriver as uc
 
-gmails = ["0982306031", "0928958175", "liu.zack0505@gmail.com"]
-passwords = ["0982306031", "0928958175", "83298329zack"]
+gmails = ["0982306031", "0928958175", "kevin731", "liu.zack0505@gmail.com"]
+passwords = ["0982306031", "0928958175", "jeep666k", "83298329zack"]
 
 # handle user
-print("輸入0是外婆的帳號, 1是阿母的帳號")
+print("輸入0是外婆的帳號, 1是阿母的帳號, 2是阿爸的帳號")
 user = int(input("請輸入使用者："))
 
 GMAIL = gmails[user]
@@ -74,7 +74,7 @@ if wait_time < 0:
     wait_time += 86400
 
 print(f"{wait_time} 秒後，開始搶票")
-time.sleep(wait_time)
+# time.sleep(wait_time)
 
 try:
     # find plus button
