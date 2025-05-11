@@ -1,0 +1,40 @@
+{
+  "url": "https://kktix.com/g/events/67c142aa-copy-1/register_info",
+  "note": "get the authenticity_token from XSRF-TOKEN header in this response",
+  "response": {
+    "inventory": null,
+    "ktx_captcha": {},
+    "current_user": {
+      "id": 3093053,
+      "email": "liu.zack0505@gmail.com",
+      "is_confirmed": true,
+      "nickname": "Zack Liu",
+      "name": "劉祐誠",
+      "id_number": null,
+      "phone": "0988453176",
+      "cellphone": null,
+      "city": "新竹市",
+      "dist": "東區",
+      "zip": "300",
+      "address": "",
+      "office": "",
+      "title": "",
+      "office_zip": "",
+      "office_address": "",
+      "time_zone": "Asia/Taipei",
+      "receipt_business_no": "",
+      "receipt_love_code": "",
+      "receipt_mobile_barcode": "",
+      "kkbox_user_type": "",
+      "kkbox_user_terr": "",
+      "purchased_quantity": 0,
+      "registered_intents": 0,
+      "verified_mobile": "886988453176",
+      "mobile_verified_at": "2021-04-07T10:19:02.046+08:00",
+      "has_joined_event_organization": false
+    },
+    "order": { "price_currency": "TWD" },
+    "locale": "zh-TW",
+    "now": "2025-05-10T17:49:44+08:00"
+  }
+}

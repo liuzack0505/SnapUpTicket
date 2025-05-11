@@ -1,0 +1,186 @@
+{
+  "url": "https://kktix.com/g/events/67c142aa-copy-1/register_info?order_id=145945264-c152cf4e838561ae34771dbb65249416",
+  "note": "remember to add the authenticity_token in the header",
+  "response": {
+    "inventory": null,
+    "ktx_captcha": {},
+    "current_user": {
+      "id": 3093053,
+      "email": "liu.zack0505@gmail.com",
+      "is_confirmed": true,
+      "nickname": "Zack Liu",
+      "name": "劉祐誠",
+      "id_number": null,
+      "phone": "0988453176",
+      "cellphone": null,
+      "city": "新竹市",
+      "dist": "東區",
+      "zip": "300",
+      "address": "",
+      "office": "",
+      "title": "",
+      "office_zip": "",
+      "office_address": "",
+      "time_zone": "Asia/Taipei",
+      "receipt_business_no": "",
+      "receipt_love_code": "",
+      "receipt_mobile_barcode": "",
+      "kkbox_user_type": "",
+      "kkbox_user_terr": "",
+      "purchased_quantity": 0,
+      "registered_intents": 0,
+      "verified_mobile": "886988453176",
+      "mobile_verified_at": "2021-04-07T10:19:02.046+08:00",
+      "has_joined_event_organization": false
+    },
+    "order": {
+      "order_no": 145945264,
+      "expires_at": "2025-05-10T10:17:52.528789Z",
+      "payment_will_expires_at": null,
+      "state": "activated",
+      "payment_state": "paid",
+      "booking_state": "ignore",
+      "payment_type": "FREE_ORDER",
+      "paid_at": "2025-05-10T09:17:52.629423Z",
+      "coupon_code": null,
+      "esunbank_account": null,
+      "attendees_count": 2,
+      "hidden": true,
+      "ibon_will_expires_at": "2099-12-31T10:00:00Z",
+      "created_at": "2025-05-10T09:17:05.403693Z",
+      "payment_type_chose": "FREE_ORDER",
+      "price": {
+        "cents": 0,
+        "currency": "TWD"
+      },
+      "to_param": "145945264-c152cf4e838561ae34771dbb65249416",
+      "items": [
+        {
+          "name": "一般票",
+          "unit_price": {
+            "cents": 0,
+            "currency": "TWD"
+          },
+          "quantity": 1,
+          "price": {
+            "cents": 0,
+            "currency": "TWD"
+          },
+          "originatorId": 874068,
+          "type": "TicketItem",
+          "accounting_subject_id": null,
+          "for_online_event": false,
+          "milli_kkpoint_magnification": null
+        },
+        {
+          "name": "公關票",
+          "unit_price": {
+            "cents": 0,
+            "currency": "TWD"
+          },
+          "quantity": 1,
+          "price": {
+            "cents": 0,
+            "currency": "TWD"
+          },
+          "originatorId": 874069,
+          "type": "TicketItem",
+          "accounting_subject_id": null,
+          "for_online_event": false,
+          "milli_kkpoint_magnification": null
+        }
+      ],
+      "contact": {
+        "field_email_943907": "liu.zack0505@gmail.com",
+        "field_text_943906": "劉祐誠",
+        "field_text_943908": "886988453176"
+      },
+      "tickets": [
+        {
+          "booking_fee_cents": 0,
+          "id": 874068,
+          "name": "一般票",
+          "price": {
+            "cents": 0,
+            "currency": "TWD"
+          }
+        },
+        {
+          "booking_fee_cents": 0,
+          "id": 874069,
+          "name": "公關票",
+          "price": {
+            "cents": 0,
+            "currency": "TWD"
+          }
+        }
+      ],
+      "attendees": [
+        {
+          "checkin_code": "DB61",
+          "id": 115741364,
+          "is_owned_by_user": true,
+          "reg_no": 7,
+          "sign_at": 0,
+          "state": "activated",
+          "ticketId": 874068,
+          "ticket_item_id": 70156113
+        },
+        {
+          "checkin_code": "GB32",
+          "id": 115741365,
+          "is_owned_by_user": true,
+          "reg_no": 8,
+          "sign_at": 0,
+          "state": "activated",
+          "ticketId": 874069,
+          "ticket_item_id": 70156114
+        }
+      ],
+      "available_payments": [
+        {
+          "provider": "NEWEBPAY_3D",
+          "provider_id": "MS3351886497",
+          "type": "CREDITCARD",
+          "disabled": false
+        },
+        {
+          "provider": "FAMIPORT_WALKIE",
+          "type": "FAMIPORT",
+          "disabled": true,
+          "disabled_reason": "金額低於 1500 無法使用"
+        },
+        {
+          "provider": "ESUN_BANK_ATM_WALKIE_HOURLY",
+          "type": "ATM",
+          "disabled": false
+        }
+      ],
+      "ticket_type": "qrcode",
+      "pickup_type": "qrcode",
+      "ibon_id_number": null,
+      "ibon_verify_no": null,
+      "famiport_pin_code": null,
+      "quotation_price": {
+        "cents": 0,
+        "currency": "TWD"
+      },
+      "pickup_twd_booth": 8000,
+      "pickup_twd_mailing": 8000,
+      "pickup_hkd_mailing": 0,
+      "pickup_hkd_booth": 0,
+      "ptr_state": "activated",
+      "patron_name": "",
+      "patron_mobile": "",
+      "patron_tel": "",
+      "patron_zip": "",
+      "patron_city": "",
+      "patron_dist": "",
+      "patron_address": "",
+      "delivered_at": "2025-05-10T09:17:52.695868Z",
+      "virtual_goods_vouchers": []
+    },
+    "locale": "zh-TW",
+    "now": "2025-05-10T17:17:52+08:00"
+  }
+}

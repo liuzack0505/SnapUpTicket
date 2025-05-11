@@ -1,0 +1,25 @@
+{
+  "url": "https://queue.kktix.com/queue/67c142aa-copy-1?authenticity_token=Bie0Wta6OHlF2zoCsgIDQs5L%2Bi%2BliMefxxYlnDZwqnlHWabfkaGG95hFYuK0v%2BdC4JOcFlu9poAJzJx1BLqUDA%3D%3D",
+  "body": {
+    "tickets": [
+      {
+        "id": 874068,
+        "quantity": 1,
+        "invitationCodes": [],
+        "member_code": "",
+        "use_qualification_id": null
+      },
+      {
+        "id": 874069,
+        "quantity": 1,
+        "invitationCodes": [],
+        "member_code": "",
+        "use_qualification_id": null
+      }
+    ],
+    "currency": "TWD",
+    "recaptcha": {},
+    "agreeTerm": true
+  },
+  "response": { "token": "dfd7cf1f-23a6-41a9-a631-ab5b38849a41" }
+}
